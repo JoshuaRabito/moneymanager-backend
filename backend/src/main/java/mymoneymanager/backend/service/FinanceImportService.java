@@ -1,4 +1,4 @@
-package service;
+package mymoneymanager.backend.service;
 
 public class FinanceImportService {
 
