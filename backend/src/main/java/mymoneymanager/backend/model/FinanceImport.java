@@ -131,5 +131,14 @@ public class FinanceImport {
 		return true;
 	}
 
+
+	@Override
+	public String toString() {
+		return "FinanceImport [firstName=" + firstName + ", lastName=" + lastName + ", deductions=" + deductions
+				+ ", netIncome=" + netIncome + ", grossIncome=" + grossIncome + ", accountType=" + accountType + "]";
+	}
+	
+	
+
 }
 
