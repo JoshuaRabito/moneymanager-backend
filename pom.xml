@@ -13,8 +13,8 @@
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>backend</name>
-	<description>Demo project for Spring Boot</description>
+	<name>moneymanager-backend</name>
+	<description>Backend for MyMoneyManager application</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -59,6 +59,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>moneymanager-backend</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
