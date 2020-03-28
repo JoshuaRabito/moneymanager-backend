@@ -1,0 +1,22 @@
+databaseChangeLog:
+
+ - changeSet:
+    id: 1.0
+    author: rabitoj
+    comment: "Adding account types"
+    changes:
+     - insert:
+         tableName: account_types
+         columns:
+         - column:
+             name: account_type
+             value: "Checking"
+     - insert:
+         tableName: account_types
+         columns:
+         - column:
+             name: account_type
+             value: "Saving"
+
+            
+  

@@ -6,21 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import mymoneymanager.backend.model.FinanceImport;
+import mymoneymanager.backend.service.ImportService;
 
 @RestController
 public class FinanceImportController {
 	private static final Logger LOG = LoggerFactory.getLogger(FinanceImportController.class);	
 	
+	@Autowired
+	ImportService service;
+	
 	
     @PostMapping("/import")
 	public HttpStatus importFinances(@RequestBody FinanceImport importedData) {
     	LOG.info("Importing finances with data...{}", importedData);
+    	service.saveFinances(importedData);
 		return HttpStatus.OK;
 	}
 	

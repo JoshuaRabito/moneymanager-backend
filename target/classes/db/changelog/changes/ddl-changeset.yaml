@@ -1,0 +1,80 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: rabitoj
+      changes:
+        - createTable:
+            tableName: account_types
+            columns:
+              - column:
+                  name: account_type_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: account_type
+                  type: varchar(10)
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false      
+  - changeSet:
+      id: 2
+      author: rabitoj
+      changes:
+        - createTable:
+            tableName: deduction_types
+            columns:
+              - column:
+                  name: deduction_type_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: deduction_type
+                  type: varchar(15)
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+  - changeSet:
+      id: 3
+      author: rabitoj
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(15)
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(15)
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+              - column:
+                  name: email
+                  type: varchar(25)
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+            
+  
