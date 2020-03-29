@@ -18,10 +18,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<jdbc.url></jdbc.url>
-		<sql.user></sql.user>
-		<sql.password></sql.password>
-
 	</properties>
 
 	<dependencies>
