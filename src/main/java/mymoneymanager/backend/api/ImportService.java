@@ -1,4 +1,4 @@
-package mymoneymanager.backend.service;
+package mymoneymanager.backend.api;
 
 import mymoneymanager.backend.model.FinanceImport;
 

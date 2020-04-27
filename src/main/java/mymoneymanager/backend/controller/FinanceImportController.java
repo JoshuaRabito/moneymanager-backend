@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import mymoneymanager.backend.api.ImportService;
 import mymoneymanager.backend.model.FinanceImport;
-import mymoneymanager.backend.service.ImportService;
 
 @RestController
 public class FinanceImportController {

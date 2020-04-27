@@ -1,22 +1,33 @@
 databaseChangeLog:
-
- - changeSet:
-    id: 1.0
-    author: rabitoj
-    comment: "Adding account types"
-    changes:
-     - insert:
-         tableName: account_types
-         columns:
-         - column:
-             name: account_type
-             value: "Checking"
-     - insert:
-         tableName: account_types
-         columns:
-         - column:
-             name: account_type
-             value: "Saving"
-
-            
-  
+   - changeSet:
+        id: 1.0
+        author: rabitoj
+        comment: "Adding account types"
+        preConditions:
+           - onFail: MARK_RAN
+           - sqlCheck:
+              expectedResult: 0
+              sql: "select count(*) from account_types where account_type = 'Checking'"
+        changes:
+           - insert:
+              tableName: account_types
+              columns:
+                 - column:
+                      name: account_type
+                      value: "Checking"
+   - changeSet:
+        id: 2.0
+        author: rabitoj
+        comment: "Adding account types"
+        preConditions:
+           - onFail: MARK_RAN
+           - sqlCheck:
+                expectedResult: 0
+                sql: "select count(*) from account_types where account_type = 'Saving'"
+        changes:
+           - insert:
+                tableName: account_types
+                columns:
+                   - column:
+                        name: account_type
+                        value: "Saving"
