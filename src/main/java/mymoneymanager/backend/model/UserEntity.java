@@ -1,11 +1,20 @@
 package mymoneymanager.backend.model;
 
-public class UserDto {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class UserEntity {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long userId;
   private String firstName;
   private String lastName;
   private String email;
+ 
 
   public Long getUserId() {
     return userId;
@@ -39,6 +48,5 @@ public class UserDto {
     this.email = email;
   }
 
-
-
+ 
 }

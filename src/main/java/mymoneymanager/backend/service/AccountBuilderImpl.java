@@ -1,26 +1,29 @@
 package mymoneymanager.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import mymoneymanager.backend.api.AccountBuilder;
 import mymoneymanager.backend.api.UserLookup;
 import mymoneymanager.backend.model.AccountDto;
 import mymoneymanager.backend.model.FinanceImport;
 
+@Service
 public class AccountBuilderImpl implements AccountBuilder {
-
-  @Autowired
+ 
   private UserLookup userLookup;
+  
+  
+  @Autowired
+  public AccountBuilderImpl(UserLookup userLookup) {
+    this.userLookup = userLookup;
+  }
+
+
 
   @Override
   public AccountDto buildAccount(FinanceImport importedData) {
     AccountDto accountDto = new AccountDto();
-    accountDto.setAccountType(importedData.getAccountType());
-    accountDto.setAccountName(importedData.getAccountName());
-    accountDto.setDeductions(importedData.getDeductions());
-    accountDto
-        .setUser(userLookup.lookupUser(importedData.getFirstName(), importedData.getLastName()));
-    accountDto.setGrossAmount(importedData.getGrossIncome());
-    accountDto.setNetAmount(importedData.getNetIncome());
+  
 
     return accountDto;
   }
