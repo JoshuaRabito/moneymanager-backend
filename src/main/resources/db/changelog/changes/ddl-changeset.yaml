@@ -2,6 +2,11 @@ databaseChangeLog:
   - changeSet:
       id: 1
       author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            schemaName: dbo
+            tablename: account_types
       changes:
         - createTable:
             tableName: account_types
@@ -23,6 +28,11 @@ databaseChangeLog:
   - changeSet:
       id: 2
       author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            schemaName: dbo
+            tablename: deduction_types
       changes:
         - createTable:
             tableName: deduction_types
@@ -44,6 +54,11 @@ databaseChangeLog:
   - changeSet:
       id: 3
       author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            schemaName: dbo
+            tablename: users
       changes:
         - createTable:
             tableName: users
