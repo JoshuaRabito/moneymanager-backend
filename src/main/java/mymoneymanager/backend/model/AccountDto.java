@@ -5,12 +5,21 @@ import java.util.List;
 
 public class AccountDto {
 
+  private Long accountId;
   private String accountType;
   private String accountName;
   private List<Deduction> deductions;
-  private UserDto user;
+  private UserEntity user;
   private BigDecimal grossAmount;
   private BigDecimal netAmount;
+
+  public Long getAccountId() {
+    return accountId;
+  }
+
+  public void setAccountId(Long accountId) {
+    this.accountId = accountId;
+  }
 
   public String getAccountType() {
     return accountType;
@@ -36,11 +45,11 @@ public class AccountDto {
     this.deductions = deductions;
   }
 
-  public UserDto getUser() {
+  public UserEntity getUser() {
     return user;
   }
 
-  public void setUser(UserDto user) {
+  public void setUser(UserEntity user) {
     this.user = user;
   }
 
@@ -59,8 +68,6 @@ public class AccountDto {
   public void setNetAmount(BigDecimal netAmount) {
     this.netAmount = netAmount;
   }
-
- 
 
 
 

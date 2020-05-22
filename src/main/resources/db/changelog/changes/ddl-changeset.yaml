@@ -167,6 +167,15 @@ databaseChangeLog:
                     - foreignKeyName: fk_account_user
                     - references: users(user_id)
               - column:
+                  name: account_type_id
+                  type: int
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+                    - foreignKeyName: fk_account_accounttype
+                    - references: account_types(account_type_id)
+              - column:
                   name: gross_amount
                   type: DECIMAL(5, 2)
                   autoIncrement: false
@@ -193,6 +202,13 @@ databaseChangeLog:
         - createTable:
             tableName: account_deduction_xref
             columns:
+              - column:
+                  name: account_deduction_xref_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
               - column:
                   name: account_id
                   type: int

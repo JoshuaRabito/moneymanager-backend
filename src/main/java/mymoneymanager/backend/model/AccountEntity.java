@@ -2,20 +2,28 @@ package mymoneymanager.backend.model;
 
 import java.math.BigDecimal;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
-@Entity
+@Entity(name="accounts")
 public class AccountEntity {
 
   @Id
+  @Column(name="account_id")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long accountId;
   private String accountType;
   private String accountName;
-  private List<Deduction> deductions;
+  private List<DeductionEntity> deductions;
   private UserEntity user;
   private BigDecimal grossAmount;
   private BigDecimal netAmount;
@@ -44,11 +52,16 @@ public class AccountEntity {
     this.accountName = accountName;
   }
 
-  public List<Deduction> getDeductions() {
+  @ManyToMany(cascade = { CascadeType.ALL })
+  @JoinTable(
+          name = "account_deduction_xref",
+          joinColumns = { @JoinColumn(name = "account_id") },
+          inverseJoinColumns = { @JoinColumn(name = "account_id") })
+  public List<DeductionEntity> getDeductions() {
     return deductions;
   }
 
-  public void setDeductions(List<Deduction> deductions) {
+  public void setDeductions(List<DeductionEntity> deductions) {
     this.deductions = deductions;
   }
 
