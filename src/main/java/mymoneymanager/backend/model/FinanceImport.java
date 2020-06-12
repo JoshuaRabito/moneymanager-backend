@@ -11,8 +11,7 @@ public class FinanceImport {
   private List<Deduction> deductions;
   private BigDecimal netIncome;
   private BigDecimal grossIncome;
-  private String accountType;
-  private String accountName;
+  private AccountType accountType;
 
 
   public FinanceImport() {
@@ -70,23 +69,16 @@ public class FinanceImport {
   }
 
 
-  public String getAccountType() {
+  public AccountType getAccountType() {
     return accountType;
   }
 
 
-  public void setAccountType(String accountType) {
+  public void setAccountType(AccountType accountType) {
     this.accountType = accountType;
   }
 
-  public String getAccountName() {
-    return this.accountName;
-  }
-
-  public void setAccountName(String accountName) {
-    this.accountName = accountName;
-  }
-
+ 
 
   @Override
   public int hashCode() {

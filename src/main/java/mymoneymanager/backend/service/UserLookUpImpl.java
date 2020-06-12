@@ -36,5 +36,14 @@ public class UserLookUpImpl implements UserLookup {
 
 
   }
+  
+  @Override
+  public UserEntity getUserEntity(String firstName, String lastName) {
+
+    UserEntity user = userRepo.findByName(lastName, firstName);
+    return user;
+
+
+  }
 
 }

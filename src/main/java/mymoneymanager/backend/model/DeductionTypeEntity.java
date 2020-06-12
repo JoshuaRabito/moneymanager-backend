@@ -12,16 +12,16 @@ public class DeductionTypeEntity {
   @Id
   @Column(name="deduction_type_id")
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long deductionTypeId;
+  private Integer deductionTypeId;
   
   @Column(name="deduction_type")
   private String deductionType;
 
-  public Long getDeductionTypeId() {
+  public Integer getDeductionTypeId() {
     return deductionTypeId;
   }
 
-  public void setDeductionTypeId(Long deductionTypeId) {
+  public void setDeductionTypeId(Integer deductionTypeId) {
     this.deductionTypeId = deductionTypeId;
   }
 

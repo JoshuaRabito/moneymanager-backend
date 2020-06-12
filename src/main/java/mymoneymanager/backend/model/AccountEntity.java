@@ -21,11 +21,19 @@ public class AccountEntity {
   @Column(name="account_id")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long accountId;
-  private String accountType;
+  
+  @Column(name="account_type_id")
+  private int accountTypeId;
+  
+  @Column(name="account_name")
   private String accountName;
   private List<DeductionEntity> deductions;
   private UserEntity user;
+  
+  @Column(name="gross_amount")
   private BigDecimal grossAmount;
+  
+  @Column(name="net_amount")
   private BigDecimal netAmount;
 
   public Long getAccountId() {
@@ -36,12 +44,12 @@ public class AccountEntity {
     this.accountId = accountId;
   }
 
-  public String getAccountType() {
-    return accountType;
+  public int getAccountTypeId() {
+    return accountTypeId;
   }
 
-  public void setAccountType(String accountType) {
-    this.accountType = accountType;
+  public void setAccountTypeId(int accountTypeId) {
+    this.accountTypeId = accountTypeId;
   }
 
   public String getAccountName() {
