@@ -12,7 +12,6 @@ import mymoneymanager.backend.repository.UserRepository;
 public class UserLookUpImpl implements UserLookup {
 
   private UserRepository userRepo;
-  
   private UserDtoBuilder userDtoBuilder;
   
   

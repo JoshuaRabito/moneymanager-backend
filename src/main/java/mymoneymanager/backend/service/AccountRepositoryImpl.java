@@ -1,24 +1,34 @@
 package mymoneymanager.backend.service;
 
+import java.util.Iterator;
 import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import mymoneymanager.backend.model.AccountDto;
 import mymoneymanager.backend.model.AccountEntity;
 import mymoneymanager.backend.repository.AccountRepository;
 
 @Service
+@Transactional
 public class AccountRepositoryImpl implements AccountRepository {
+  
+  @PersistenceContext
+  private EntityManager entityManager;
 
   @Override
   public <S extends AccountEntity> S save(S entity) {
-    // TODO Auto-generated method stub
-    return null;
+    entityManager.persist(entity);
+    return entity;
   }
 
   @Override
   public <S extends AccountEntity> Iterable<S> saveAll(Iterable<S> entities) {
-    // TODO Auto-generated method stub
-    return null;
+    for (S s : entities) {
+      entityManager.persist(s);
+    }
+    return entities;
   }
 
   @Override
@@ -75,10 +85,6 @@ public class AccountRepositoryImpl implements AccountRepository {
 
   }
 
-  @Override
-  public void save(AccountDto accountDto) {
-    // TODO Auto-generated method stub
 
-  }
 
 }

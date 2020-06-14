@@ -33,7 +33,7 @@ public class DeductionBuilderImpl implements DeductionBuilder {
   private DeductionTypeEntity buildDeductionType(Deduction deduction) {
     DeductionTypeEntity typeEntity = new DeductionTypeEntity();
     typeEntity.setDeductionType(deduction.getType());
-    typeEntity.setDeductionTypeId(DeductionTypes.getId(deduction.getType()));
+    typeEntity.setDeductionTypeId(DeductionTypes.valueOf(deduction.getType()).getId());
     return typeEntity;
   }
 

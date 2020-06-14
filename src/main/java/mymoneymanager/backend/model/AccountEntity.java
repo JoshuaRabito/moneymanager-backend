@@ -13,27 +13,40 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.Digits;
 
 @Entity(name="accounts")
 public class AccountEntity {
 
   @Id
   @Column(name="account_id")
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long accountId;
   
   @Column(name="account_type_id")
-  private int accountTypeId;
+  private Integer accountTypeId;
   
   @Column(name="account_name")
   private String accountName;
+  
+  @ManyToMany(cascade = { CascadeType.ALL })
+  @JoinTable(
+          name = "account_deduction_xref",
+          joinColumns = { @JoinColumn(name = "account_id") },
+          inverseJoinColumns = { @JoinColumn(name = "deduction_id") })
   private List<DeductionEntity> deductions;
+  
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
   private UserEntity user;
   
-  @Column(name="gross_amount")
+  @Column(name="gross_amount", precision=4, scale=2)
+  @Digits(integer=4, fraction=2)
   private BigDecimal grossAmount;
   
-  @Column(name="net_amount")
+  @Column(name="net_amount", precision=4, scale=2)
+  @Digits(integer=4, fraction=2)
   private BigDecimal netAmount;
 
   public Long getAccountId() {
@@ -60,11 +73,7 @@ public class AccountEntity {
     this.accountName = accountName;
   }
 
-  @ManyToMany(cascade = { CascadeType.ALL })
-  @JoinTable(
-          name = "account_deduction_xref",
-          joinColumns = { @JoinColumn(name = "account_id") },
-          inverseJoinColumns = { @JoinColumn(name = "account_id") })
+  
   public List<DeductionEntity> getDeductions() {
     return deductions;
   }

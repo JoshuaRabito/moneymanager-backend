@@ -6,6 +6,6 @@ import mymoneymanager.backend.model.AccountEntity;
 
 public interface AccountRepository extends CrudRepository<AccountEntity, Long> {
 
-  void save(AccountDto accountDto);
+ 
 
 }

@@ -11,7 +11,7 @@ public class DeductionTypeEntity {
   
   @Id
   @Column(name="deduction_type_id")
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer deductionTypeId;
   
   @Column(name="deduction_type")
