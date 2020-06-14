@@ -1,35 +1,19 @@
 package mymoneymanager.backend.model;
 
 public enum DeductionTypes {
-  RENT("Rent", 1),
-  MED("Medical", 2),
-  FOOD("Food", 3),
-  UTIL("Utility", 4),
-  CAR("Car", 5),
-  OTHER("Other", 6),
-  SAVING("Savings", 7);
+  RENT(1), MEDICAL(2), FOOD(3), UTILITY(4), CAR(5), OTHER(6), SAVINGS(7);
 
-  private String name;
+
   private int id;
 
-  DeductionTypes(String name, int id) {
-    this.name = name;
+  DeductionTypes(int id) {
     this.id = id;
   }
-  
-  
-  public static int getId(String name){
-    for(DeductionTypes e : values()) {
-      if(e.name.equalsIgnoreCase(name)) {
-        return e.id;
-      }
+
+  public int getId() {
+    return id;
   }
-    throw new IllegalArgumentException("No deduction type by that name was found.");
-  }
-  
-  
-  
-  
-  
+
+
 
 }

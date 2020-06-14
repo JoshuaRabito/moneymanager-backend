@@ -8,6 +8,7 @@ public class FinanceImport {
 
   private String firstName;
   private String lastName;
+  private String accountName;
   private List<Deduction> deductions;
   private BigDecimal netIncome;
   private BigDecimal grossIncome;
@@ -36,6 +37,17 @@ public class FinanceImport {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+
+
+  public String getAccountName() {
+    return accountName;
+  }
+
+
+  public void setAccountName(String accountName) {
+    this.accountName = accountName;
   }
 
 
@@ -78,12 +90,12 @@ public class FinanceImport {
     this.accountType = accountType;
   }
 
- 
 
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
+    result = prime * result + ((accountName == null) ? 0 : accountName.hashCode());
     result = prime * result + ((accountType == null) ? 0 : accountType.hashCode());
     result = prime * result + ((deductions == null) ? 0 : deductions.hashCode());
     result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
@@ -103,6 +115,11 @@ public class FinanceImport {
     if (getClass() != obj.getClass())
       return false;
     FinanceImport other = (FinanceImport) obj;
+    if (accountName == null) {
+      if (other.accountName != null)
+        return false;
+    } else if (!accountName.equals(other.accountName))
+      return false;
     if (accountType != other.accountType)
       return false;
     if (deductions == null) {
@@ -136,11 +153,10 @@ public class FinanceImport {
 
   @Override
   public String toString() {
-    return "FinanceImport [firstName=" + firstName + ", lastName=" + lastName + ", deductions="
-        + deductions + ", netIncome=" + netIncome + ", grossIncome=" + grossIncome
-        + ", accountType=" + accountType + "]";
+    return "FinanceImport [firstName=" + firstName + ", lastName=" + lastName + ", accountName="
+        + accountName + ", deductions=" + deductions + ", netIncome=" + netIncome + ", grossIncome="
+        + grossIncome + ", accountType=" + accountType + "]";
   }
-
 
 
 }

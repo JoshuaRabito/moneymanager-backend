@@ -27,15 +27,16 @@ public class AccountBuilderImpl implements AccountBuilder {
 
   @Override
   public AccountEntity buildAccountEntity(FinanceImport importedData) {
-    AccountEntity accountDto = new AccountEntity();
-    accountDto.setAccountTypeId(importedData.getAccountType().getId());
-    accountDto.setDeductions(deductionBuilder.buildDeductions(importedData.getDeductions()));
-    accountDto.setGrossAmount(importedData.getGrossIncome());
-    accountDto.setNetAmount(importedData.getNetIncome());
-    accountDto.setUser(userLookup.getUserEntity(importedData.getFirstName(), importedData.getLastName()));
+    AccountEntity accountEntity = new AccountEntity();
+    accountEntity.setAccountTypeId(importedData.getAccountType().getId());
+    accountEntity.setDeductions(deductionBuilder.buildDeductions(importedData.getDeductions()));
+    accountEntity.setGrossAmount(importedData.getGrossIncome());
+    accountEntity.setNetAmount(importedData.getNetIncome());
+    accountEntity.setAccountName(importedData.getAccountName());
+    accountEntity.setUser(userLookup.getUserEntity(importedData.getFirstName(), importedData.getLastName()));
 
 
-    return accountDto;
+    return accountEntity;
   }
 
 }
