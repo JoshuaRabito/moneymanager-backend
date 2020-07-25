@@ -3,18 +3,18 @@ package mymoneymanager.backend.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Deduction implements Serializable{
+public class DeductionDTO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String type;
 	private BigDecimal amount;
 	
-	public Deduction() {
+	public DeductionDTO() {
 		
 	}
 
-	public Deduction(String name, String type, BigDecimal amount) {
+	public DeductionDTO(String name, String type, BigDecimal amount) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -63,7 +63,7 @@ public class Deduction implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Deduction other = (Deduction) obj;
+		DeductionDTO other = (DeductionDTO) obj;
 		if (amount == null) {
 			if (other.amount != null)
 				return false;

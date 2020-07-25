@@ -30,6 +30,15 @@ public enum AccountType {
     throw new IllegalArgumentException("No account type by that name was found.");
   }
   
+  public static String getType(int id){
+    for(AccountType e : values()) {
+      if(e.id == id) {
+        return e.type;
+      }
+  }
+    throw new IllegalArgumentException("No account type by that id was found.");
+  }
+  
   
   
   

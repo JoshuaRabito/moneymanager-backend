@@ -1,11 +1,14 @@
 package mymoneymanager.backend.api;
 
-import mymoneymanager.backend.model.AccountDto;
+import java.util.Optional;
+import mymoneymanager.backend.model.AccountDTO;
 import mymoneymanager.backend.model.AccountEntity;
-import mymoneymanager.backend.model.FinanceImport;
+import mymoneymanager.backend.model.FinanceDTO;
 
 public interface AccountBuilder {
 
-	AccountEntity buildAccountEntity(FinanceImport importedData);
+  	AccountEntity buildAccountEntity(FinanceDTO importedData);
+  
+    void buildDTO(Optional<AccountEntity> accountEntity);
 
 }

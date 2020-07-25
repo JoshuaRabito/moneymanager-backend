@@ -1,6 +1,7 @@
 package mymoneymanager.backend.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,6 +49,12 @@ public class AccountEntity {
   @Column(name="net_amount", precision=4, scale=2)
   @Digits(integer=4, fraction=2)
   private BigDecimal netAmount;
+  
+  @Column(name="date_created")
+  private Date dateCreated;
+  
+  @Column(name="date_updated")
+  private Date dateUpdated;
 
   public Long getAccountId() {
     return accountId;
@@ -106,6 +113,21 @@ public class AccountEntity {
     this.netAmount = netAmount;
   }
 
+  public Date getDateCreated() {
+    return dateCreated;
+  }
 
+  public void setDateCreated(Date dateCreated) {
+    this.dateCreated = dateCreated;
+  }
+
+  public Date getDateUpdated() {
+    return dateUpdated;
+  }
+
+  public void setDateUpdated(Date dateUpdated) {
+    this.dateUpdated = dateUpdated;
+  }
+  
 
 }

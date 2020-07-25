@@ -1,12 +1,13 @@
 package mymoneymanager.backend.service;
 
-import java.util.Iterator;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
-import mymoneymanager.backend.model.AccountDto;
 import mymoneymanager.backend.model.AccountEntity;
 import mymoneymanager.backend.repository.AccountRepository;
 
@@ -83,6 +84,12 @@ public class AccountRepositoryImpl implements AccountRepository {
   public void deleteAll() {
     // TODO Auto-generated method stub
 
+  }
+
+  @Override
+  public Optional<AccountEntity> findByNameOrDateCreated(String name, Date dateCreated){
+    System.out.println("getting account by ");
+    return Optional.empty();
   }
 
 

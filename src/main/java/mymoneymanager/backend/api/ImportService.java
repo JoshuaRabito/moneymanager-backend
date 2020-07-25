@@ -1,6 +1,8 @@
 package mymoneymanager.backend.api;
 
-import mymoneymanager.backend.model.FinanceImport;
+import mymoneymanager.backend.model.AccountDTO;
+import mymoneymanager.backend.model.FinanceDTO;
+import mymoneymanager.backend.model.FinanceSearchParam;
 
 /**
  * {@code ImportService} class
@@ -9,12 +11,15 @@ import mymoneymanager.backend.model.FinanceImport;
  * Interface for saving imported finances.
  * 
  * </br>
+ * 
  * @author Rabito, Joshua
  *
  */
 public interface ImportService {
 
-	
-	void saveFinances(FinanceImport importedData);
+
+  void saveFinances(FinanceDTO importedData);
+
+  AccountDTO findFinances(FinanceSearchParam param);
 
 }
