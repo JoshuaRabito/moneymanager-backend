@@ -19,6 +19,7 @@ public class FinanceImportController {
 
 
   @PostMapping("/import")
+
   public HttpStatus importFinances(@RequestBody FinanceDTO importedData) {
     LOG.info("Importing finances with data...{}", importedData);
     try {

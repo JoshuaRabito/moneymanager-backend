@@ -9,8 +9,8 @@ import mymoneymanager.backend.model.AccountEntity;
 public interface AccountRepository extends CrudRepository<AccountEntity, Long> {
   
   
-  
   public Optional<AccountEntity> findByNameOrDateCreated(String name, Date dateCreated);
+
  
 
 }

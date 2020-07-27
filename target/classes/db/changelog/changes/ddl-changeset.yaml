@@ -1,4 +1,4 @@
-databaseChangeLog:
+ databaseChangeLog:
   - changeSet:
       id: 1
       author: rabitoj
@@ -91,5 +91,173 @@ databaseChangeLog:
                   constraints:
                     - primaryKey: false
                     - nullable: false
-            
-  
+  - changeSet:
+      id: 4
+      author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            schemaName: dbo
+            tablename: deductions
+      changes:
+        - createTable:
+            tableName: deductions
+            columns:
+              - column:
+                  name: deduction_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: name
+                  type: varchar(25)
+                  autoIncrement: false
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: deduction_type_id
+                  type: int
+                  autoIncrement: false
+                  constraints:
+                    - nullable: false
+                    - foreignKeyName: fk_deduction_deductiontype
+                    - references: deduction_types(deduction_type_id)
+              - column:
+                  name: amount
+                  type: DECIMAL(6,2)
+                  autoIncrement: false
+                  constraints:
+                    - nullable: false
+
+  - changeSet:
+      id: 5
+      author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            schemaName: dbo
+            tablename: accounts
+      changes:
+        - createTable:
+            tableName: accounts
+            columns:
+              - column:
+                  name: account_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: account_name
+                  type: varchar(25)
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+              - column:
+                  name: user_id
+                  type: int
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+                    - foreignKeyName: fk_account_user
+                    - references: users(user_id)
+              - column:
+                  name: account_type_id
+                  type: int
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+                    - foreignKeyName: fk_account_accounttype
+                    - references: account_types(account_type_id)
+              - column:
+                  name: gross_amount
+                  type: DECIMAL(6, 2)
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+              - column:
+                  name: net_amount
+                  type: DECIMAL(6, 2)
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false      
+                    
+  - changeSet:
+      id: 6
+      author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            schemaName: dbo
+            tablename: account_deduction_xref
+      changes:
+        - createTable:
+            tableName: account_deduction_xref
+            columns:
+              - column:
+                  name: account_deduction_xref_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: account_id
+                  type: int
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+                    - foreignKeyName: fk_accountid_account_deduction_xref
+                    - references: accounts(account_id)
+              - column:
+                  name: deduction_id
+                  type: int
+                  autoIncrement: false
+                  constraints:
+                    - primaryKey: false
+                    - nullable: false
+                    - foreignKeyName: fk_deductionId_account_deduction_xref
+                    - references: deductions(deduction_id)
+  - changeSet:
+      id: 7
+      author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - columnExists:
+            tablename: accounts
+            coulmnName: date_created
+      changes:
+        - addColumn:
+            tableName: accounts
+            columns:
+              - column:
+                  name: date_created
+                  type: datetime
+                  constraints:
+                    - nullable: true
+  - changeSet:
+      id: 8
+      author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - columnExists:
+            tablename: accounts
+            coulmnName: date_updated
+      changes:
+        - addColumn:
+            tableName: accounts
+            columns:
+              - column:
+                  name: date_updated
+                  type: datetime
+                  constraints:
+                    - nullable: true

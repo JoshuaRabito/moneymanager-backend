@@ -57,10 +57,7 @@ public class AccountBuilderImpl implements AccountBuilder {
     dto.setGrossAmount(entity.getGrossAmount());
     dto.setNetAmount(entity.getNetAmount());
     dto.setUser(entity.getUser());
-    
 
-    
-    
   }
 
 }

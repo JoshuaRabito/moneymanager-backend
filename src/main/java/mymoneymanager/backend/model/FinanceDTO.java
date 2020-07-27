@@ -115,6 +115,7 @@ public class FinanceDTO {
     if (getClass() != obj.getClass())
       return false;
     FinanceDTO other = (FinanceDTO) obj;
+   
     if (accountName == null) {
       if (other.accountName != null)
         return false;
@@ -157,9 +158,6 @@ public class FinanceDTO {
         + accountName + ", deductions=" + deductions + ", netIncome=" + netIncome + ", grossIncome="
         + grossIncome + ", accountType=" + accountType + "]";
   }
-
-
-
 
 
 }
