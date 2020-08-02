@@ -2,9 +2,11 @@ package mymoneymanager.backend.service;
 
 import java.util.Date;
 import java.util.Optional;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import mymoneymanager.backend.model.AccountEntity;
 import mymoneymanager.backend.repository.AccountRepository;
@@ -12,9 +14,12 @@ import mymoneymanager.backend.repository.AccountRepository;
 @Service
 @Transactional
 public class AccountRepositoryImpl implements AccountRepository {
-  
+
   @PersistenceContext
   private EntityManager entityManager;
+  
+  @Autowired
+  private Logger logger;
 
   @Override
   public <S extends AccountEntity> S save(S entity) {
@@ -85,11 +90,11 @@ public class AccountRepositoryImpl implements AccountRepository {
   }
 
   @Override
-  public Optional<AccountEntity> findByNameOrDateCreated(String name, Date dateCreated){
+  public Optional<AccountEntity> findByNameOrDateCreated(String name, Date dateCreated) {
     System.out.println("getting account by ");
-    return Optional.empty();
+    return entityManager.createNamedQuery("AccountEntity.findByNameOrDate", AccountEntity.class)
+        .setParameter(1, name).setParameter(2, dateCreated).getResultStream().findFirst();
   }
-
 
 
 

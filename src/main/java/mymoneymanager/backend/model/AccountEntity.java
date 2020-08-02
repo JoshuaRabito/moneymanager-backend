@@ -13,47 +13,48 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Digits;
 
-@Entity(name="accounts")
+@Entity(name = "accounts")
+@NamedQuery(name = "AccountEntity.findByNameOrDate",
+    query = "select a from accounts a where a.accountName = ?1 or " + "a.dateCreated = ?2")
 public class AccountEntity {
 
   @Id
-  @Column(name="account_id")
+  @Column(name = "account_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long accountId;
-  
-  @Column(name="account_type_id")
+
+  @Column(name = "account_type_id")
   private Integer accountTypeId;
-  
-  @Column(name="account_name")
+
+  @Column(name = "account_name")
   private String accountName;
-  
-  @ManyToMany(cascade = { CascadeType.ALL })
-  @JoinTable(
-          name = "account_deduction_xref",
-          joinColumns = { @JoinColumn(name = "account_id") },
-          inverseJoinColumns = { @JoinColumn(name = "deduction_id") })
+
+  @ManyToMany(cascade = {CascadeType.ALL})
+  @JoinTable(name = "account_deduction_xref", joinColumns = {@JoinColumn(name = "account_id")},
+      inverseJoinColumns = {@JoinColumn(name = "deduction_id")})
   private List<DeductionEntity> deductions;
-  
+
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
   private UserEntity user;
-  
-  @Column(name="gross_amount", precision=4, scale=2)
-  @Digits(integer=4, fraction=2)
+
+  @Column(name = "gross_amount", precision = 4, scale = 2)
+  @Digits(integer = 4, fraction = 2)
   private BigDecimal grossAmount;
-  
-  @Column(name="net_amount", precision=4, scale=2)
-  @Digits(integer=4, fraction=2)
+
+  @Column(name = "net_amount", precision = 4, scale = 2)
+  @Digits(integer = 4, fraction = 2)
   private BigDecimal netAmount;
-  
-  @Column(name="date_created")
+
+  @Column(name = "date_created")
   private Date dateCreated;
-  
-  @Column(name="date_updated")
+
+  @Column(name = "date_updated")
   private Date dateUpdated;
 
   public Long getAccountId() {
@@ -80,7 +81,7 @@ public class AccountEntity {
     this.accountName = accountName;
   }
 
-  
+
   public List<DeductionEntity> getDeductions() {
     return deductions;
   }
@@ -128,6 +129,6 @@ public class AccountEntity {
   public void setDateUpdated(Date dateUpdated) {
     this.dateUpdated = dateUpdated;
   }
-  
+
 
 }
