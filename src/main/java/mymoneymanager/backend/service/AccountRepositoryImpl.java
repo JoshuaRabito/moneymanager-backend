@@ -2,6 +2,7 @@ package mymoneymanager.backend.service;
 
 import java.util.Date;
 import java.util.Optional;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -91,7 +92,7 @@ public class AccountRepositoryImpl implements AccountRepository {
 
   @Override
   public Optional<AccountEntity> findByNameOrDateCreated(String name, Date dateCreated) {
-    System.out.println("getting account by ");
+    logger.log(Level.INFO,"getting account by name {0} or date {1}", new Object[] {name, dateCreated});
     return entityManager.createNamedQuery("AccountEntity.findByNameOrDate", AccountEntity.class)
         .setParameter(1, name).setParameter(2, dateCreated).getResultStream().findFirst();
   }

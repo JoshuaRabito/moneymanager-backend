@@ -2,7 +2,7 @@ package mymoneymanager.backend.api;
 
 import mymoneymanager.backend.model.AccountDTO;
 import mymoneymanager.backend.model.FinanceDTO;
-import mymoneymanager.backend.model.FinanceSearchParam;
+import mymoneymanager.backend.model.FinanceSearchDTO;
 
 /**
  * {@code ImportService} class
@@ -20,6 +20,6 @@ public interface ImportService {
 
   void saveFinances(FinanceDTO importedData);
 
-  AccountDTO findFinances(FinanceSearchParam param);
+  AccountDTO findFinances(FinanceSearchDTO param);
 
 }

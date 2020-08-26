@@ -8,7 +8,7 @@ import mymoneymanager.backend.api.ImportService;
 import mymoneymanager.backend.model.AccountDTO;
 import mymoneymanager.backend.model.AccountEntity;
 import mymoneymanager.backend.model.FinanceDTO;
-import mymoneymanager.backend.model.FinanceSearchParam;
+import mymoneymanager.backend.model.FinanceSearchDTO;
 import mymoneymanager.backend.repository.AccountRepository;
 
 @Service
@@ -35,7 +35,7 @@ public class ImportServiceImpl implements ImportService {
 
 
   @Override
-  public AccountDTO findFinances(FinanceSearchParam param) {
+  public AccountDTO findFinances(FinanceSearchDTO param) {
     Optional<AccountEntity> accountEntity =
         accountRepo.findByNameOrDateCreated(param.getAccountName(), param.getDateCreated());
     if(accountEntity.isPresent()) {
