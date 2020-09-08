@@ -1,10 +1,11 @@
 package mymoneymanager.backend.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-public class AccountDTO {
+public class AccountDTO implements Serializable{
 
   private Long accountId;
   private String accountType;

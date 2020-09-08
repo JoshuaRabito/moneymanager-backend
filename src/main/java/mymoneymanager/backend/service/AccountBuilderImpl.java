@@ -1,7 +1,6 @@
 package mymoneymanager.backend.service;
 
 import java.util.Date;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import mymoneymanager.backend.api.AccountBuilder;
@@ -46,8 +45,7 @@ public class AccountBuilderImpl implements AccountBuilder {
 
 
   @Override
-  public void buildDTO(Optional<AccountEntity> accountEntity) {
-    AccountEntity entity = accountEntity.get();
+  public AccountDTO buildDTO(AccountEntity entity) {
     AccountDTO dto = new AccountDTO();
     dto.setAccountName(entity.getAccountName());
     dto.setAccountType(AccountType.getType(entity.getAccountTypeId()));
@@ -57,7 +55,7 @@ public class AccountBuilderImpl implements AccountBuilder {
     dto.setGrossAmount(entity.getGrossAmount());
     dto.setNetAmount(entity.getNetAmount());
     dto.setUser(entity.getUser());
-
+    return dto;
   }
 
 }

@@ -33,13 +33,20 @@ public class DeductionBuilderImpl implements DeductionBuilder {
   private DeductionTypeEntity buildDeductionType(DeductionDTO deduction) {
     DeductionTypeEntity typeEntity = new DeductionTypeEntity();
     typeEntity.setDeductionType(deduction.getType());
-    typeEntity.setDeductionTypeId(DeductionTypes.valueOf(deduction.getType()).getId());
+    typeEntity.setDeductionTypeId(DeductionTypes.getIdByValue(deduction.getType()));
     return typeEntity;
   }
 
   @Override
   public List<DeductionDTO> buildDeductionsDTOs(List<DeductionEntity> deductions) {
     List<DeductionDTO> dtos = new ArrayList<>();
+    for (DeductionEntity entity : deductions) {
+      DeductionDTO dto = new DeductionDTO();
+      dto.setAmount(entity.getAmount());
+      dto.setName(entity.getName());
+      dto.setType(entity.getDeductionType().getDeductionType());
+      dtos.add(dto);
+    }
     return dtos;
   }
 
