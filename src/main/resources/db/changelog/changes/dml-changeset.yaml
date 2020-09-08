@@ -1,6 +1,6 @@
 databaseChangeLog:
    - changeSet:
-        id: 1.0
+        id: 1
         author: rabitoj
         comment: "Adding account types"
         preConditions:
@@ -16,7 +16,7 @@ databaseChangeLog:
                       name: account_type
                       value: "Checking"
    - changeSet:
-        id: 2.0
+        id: 2
         author: rabitoj
         comment: "Adding account types"
         preConditions:
@@ -32,7 +32,7 @@ databaseChangeLog:
                         name: account_type
                         value: "Saving"
    - changeSet:
-        id: 3.0
+        id: 3
         author: rabitoj
         comment: "Adding deduction types"
         preConditions:

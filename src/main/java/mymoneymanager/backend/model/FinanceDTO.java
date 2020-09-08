@@ -2,20 +2,19 @@ package mymoneymanager.backend.model;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class FinanceImport {
+public class FinanceDTO {
 
   private String firstName;
   private String lastName;
   private String accountName;
-  private List<Deduction> deductions;
+  private List<DeductionDTO> deductions;
   private BigDecimal netIncome;
   private BigDecimal grossIncome;
   private AccountType accountType;
 
 
-  public FinanceImport() {
+  public FinanceDTO() {
 
   }
 
@@ -51,12 +50,12 @@ public class FinanceImport {
   }
 
 
-  public List<Deduction> getDeductions() {
+  public List<DeductionDTO> getDeductions() {
     return deductions;
   }
 
 
-  public void setDeductions(List<Deduction> deductions) {
+  public void setDeductions(List<DeductionDTO> deductions) {
     this.deductions = deductions;
   }
 
@@ -114,7 +113,8 @@ public class FinanceImport {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    FinanceImport other = (FinanceImport) obj;
+    FinanceDTO other = (FinanceDTO) obj;
+   
     if (accountName == null) {
       if (other.accountName != null)
         return false;
@@ -153,7 +153,7 @@ public class FinanceImport {
 
   @Override
   public String toString() {
-    return "FinanceImport [firstName=" + firstName + ", lastName=" + lastName + ", accountName="
+    return "FinanceDTO [firstName=" + firstName + ", lastName=" + lastName + ", accountName="
         + accountName + ", deductions=" + deductions + ", netIncome=" + netIncome + ", grossIncome="
         + grossIncome + ", accountType=" + accountType + "]";
   }

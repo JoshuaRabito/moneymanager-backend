@@ -1,21 +1,26 @@
 package mymoneymanager.backend.service;
 
-import java.util.Iterator;
+import java.util.Date;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import mymoneymanager.backend.model.AccountDto;
 import mymoneymanager.backend.model.AccountEntity;
 import mymoneymanager.backend.repository.AccountRepository;
 
 @Service
 @Transactional
 public class AccountRepositoryImpl implements AccountRepository {
-  
+
   @PersistenceContext
   private EntityManager entityManager;
+  
+  @Autowired
+  private Logger logger;
 
   @Override
   public <S extends AccountEntity> S save(S entity) {
@@ -83,6 +88,13 @@ public class AccountRepositoryImpl implements AccountRepository {
   public void deleteAll() {
     // TODO Auto-generated method stub
 
+  }
+
+  @Override
+  public Optional<AccountEntity> findByNameOrDateCreated(String name, Date dateCreated) {
+    logger.log(Level.INFO,"getting account by name {0} or date {1}", new Object[] {name, dateCreated});
+    return entityManager.createNamedQuery("AccountEntity.findByNameOrDate", AccountEntity.class)
+        .setParameter(1, name).setParameter(2, dateCreated).getResultStream().findFirst();
   }
 
 

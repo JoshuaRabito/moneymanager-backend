@@ -227,3 +227,37 @@
                     - nullable: false
                     - foreignKeyName: fk_deductionId_account_deduction_xref
                     - references: deductions(deduction_id)
+  - changeSet:
+      id: 7
+      author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - columnExists:
+            tablename: accounts
+            coulmnName: date_created
+      changes:
+        - addColumn:
+            tableName: accounts
+            columns:
+              - column:
+                  name: date_created
+                  type: datetime
+                  constraints:
+                    - nullable: true
+  - changeSet:
+      id: 8
+      author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - columnExists:
+            tablename: accounts
+            coulmnName: date_updated
+      changes:
+        - addColumn:
+            tableName: accounts
+            columns:
+              - column:
+                  name: date_updated
+                  type: datetime
+                  constraints:
+                    - nullable: true

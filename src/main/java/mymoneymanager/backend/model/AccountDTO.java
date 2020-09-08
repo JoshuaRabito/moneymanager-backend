@@ -1,17 +1,21 @@
 package mymoneymanager.backend.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
-public class AccountDto {
+public class AccountDTO implements Serializable{
 
   private Long accountId;
   private String accountType;
   private String accountName;
-  private List<Deduction> deductions;
+  private List<DeductionDTO> deductions;
   private UserEntity user;
   private BigDecimal grossAmount;
   private BigDecimal netAmount;
+  private Date dateCreated;
+  private Date dateUpdated;
 
   public Long getAccountId() {
     return accountId;
@@ -37,11 +41,11 @@ public class AccountDto {
     this.accountName = accountName;
   }
 
-  public List<Deduction> getDeductions() {
+  public List<DeductionDTO> getDeductions() {
     return deductions;
   }
 
-  public void setDeductions(List<Deduction> deductions) {
+  public void setDeductions(List<DeductionDTO> deductions) {
     this.deductions = deductions;
   }
 
@@ -67,6 +71,22 @@ public class AccountDto {
 
   public void setNetAmount(BigDecimal netAmount) {
     this.netAmount = netAmount;
+  }
+
+  public Date getDateCreated() {
+    return dateCreated;
+  }
+
+  public void setDateCreated(Date dateCreated) {
+    this.dateCreated = dateCreated;
+  }
+
+  public Date getDateUpdated() {
+    return dateUpdated;
+  }
+
+  public void setDateUpdated(Date dateUpdated) {
+    this.dateUpdated = dateUpdated;
   }
 
 
