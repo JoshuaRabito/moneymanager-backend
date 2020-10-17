@@ -15,10 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import mymoneymanager.backend.api.ExportService;
 import mymoneymanager.backend.api.ImportService;
 import mymoneymanager.backend.model.AccountDTO;
-import mymoneymanager.backend.model.FinanceDTO;
 
 @RestController
-public class FinanceController {
+public class AccountController {
 
 
   @Autowired
@@ -53,9 +52,9 @@ public class FinanceController {
 
 
   @PostMapping("/accounts")
-  public ResponseEntity<FinanceDTO> importFinances(@RequestBody FinanceDTO importedData) {
+  public ResponseEntity<AccountDTO> importFinances(@RequestBody AccountDTO importedData) {
     logger.log(Level.INFO, "Importing finances with data...{0}", importedData);
-    ResponseEntity<FinanceDTO> response = ResponseEntity.noContent().build();
+    ResponseEntity<AccountDTO> response = ResponseEntity.noContent().build();
 
     try {
       importService.saveFinances(importedData);
