@@ -2,12 +2,13 @@ package mymoneymanager.backend.api;
 
 import mymoneymanager.backend.model.AccountDTO;
 import mymoneymanager.backend.model.AccountEntity;
-import mymoneymanager.backend.model.FinanceDTO;
 
 public interface AccountBuilder {
 
-  	AccountEntity buildAccountEntity(FinanceDTO importedData);
+  	AccountEntity buildAccountEntity(AccountDTO accountDTO);
   
     AccountDTO buildDTO(AccountEntity entity);
+
+    AccountEntity updateExisting(AccountEntity existingAccount, AccountEntity updatedAccount);
 
 }

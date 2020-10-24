@@ -261,3 +261,10 @@
                   type: datetime
                   constraints:
                     - nullable: true
+  - changeSet:
+      id: 9
+      author: rabitoj
+      changes:
+        - addUniqueConstraint:
+            tableName: accounts
+            columnNames: account_name, user_id          

@@ -11,7 +11,7 @@ public class AccountDTO implements Serializable{
   private String accountType;
   private String accountName;
   private List<DeductionDTO> deductions;
-  private UserEntity user;
+  private UserDto user;
   private BigDecimal grossAmount;
   private BigDecimal netAmount;
   private Date dateCreated;
@@ -49,11 +49,11 @@ public class AccountDTO implements Serializable{
     this.deductions = deductions;
   }
 
-  public UserEntity getUser() {
+  public UserDto getUser() {
     return user;
   }
 
-  public void setUser(UserEntity user) {
+  public void setUser(UserDto user) {
     this.user = user;
   }
 

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Digits;
 
@@ -26,6 +28,11 @@ public class DeductionEntity {
   
   @Digits(integer=4, fraction=2)
   private BigDecimal amount;
+  
+  @ManyToOne
+  @JoinTable(name = "account_deduction_xref", joinColumns = {@JoinColumn(name = "account_id")},
+  inverseJoinColumns = {@JoinColumn(name = "deduction_id")})
+  private AccountEntity accountEntity;
 
   public Long getDeductionId() {
     return deductionId;
@@ -59,6 +66,16 @@ public class DeductionEntity {
     this.amount = amount;
   }
 
+  public AccountEntity getAccountEntity() {
+    return accountEntity;
+  }
+
+  public void setAccountEntity(AccountEntity accountEntity) {
+    this.accountEntity = accountEntity;
+  }
+
+  
+  
 
 
 }

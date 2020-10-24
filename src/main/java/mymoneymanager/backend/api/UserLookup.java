@@ -7,6 +7,6 @@ public interface UserLookup {
 
   UserDto lookupUser(String firstName, String lastName);
 
-  UserEntity getUserEntity(String firstName, String lastName);
+  UserEntity getUserEntity(UserDto user);
 
 }
