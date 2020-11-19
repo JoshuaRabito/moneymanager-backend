@@ -1,4 +1,4 @@
-name: Build
+name: moneymanager-backend build
 on:
   push:
     branches:
