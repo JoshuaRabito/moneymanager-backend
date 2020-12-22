@@ -26,7 +26,7 @@ public class ExportServiceImpl implements ExportService {
   @Override
   public AccountDTO findFinances(String accountName, Date dateCreated) {
     AccountDTO dto = null;
-    Optional<AccountEntity> accountEntity = accountRepo.findByNameOrDateCreated(accountName, dateCreated);
+    Optional<AccountEntity> accountEntity = accountRepo.findByAccountNameOrDateCreated(accountName, dateCreated);
     if(accountEntity.isPresent()) {
       dto = accountBuilder.buildDTO(accountEntity.get());
     }

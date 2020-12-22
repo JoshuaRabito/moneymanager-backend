@@ -2,13 +2,15 @@ package mymoneymanager.backend.repository;
 
 import java.util.Date;
 import java.util.Optional;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import mymoneymanager.backend.model.AccountEntity;
 
-public interface AccountRepository extends CrudRepository<AccountEntity, Long> {
+@Repository
+public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
   
   
-  public Optional<AccountEntity> findByNameOrDateCreated(String name, Date dateCreated);
+  public Optional<AccountEntity> findByAccountNameOrDateCreated(String name, Date dateCreated);
 
  
 

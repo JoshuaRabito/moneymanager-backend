@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import mymoneymanager.backend.api.AccountBuilder;
 import mymoneymanager.backend.api.DeductionBuilder;
 import mymoneymanager.backend.api.UserBuilder;
-import mymoneymanager.backend.api.UserLookup;
 import mymoneymanager.backend.model.AccountDTO;
 import mymoneymanager.backend.model.AccountEntity;
 import mymoneymanager.backend.model.AccountType;
@@ -14,13 +13,13 @@ import mymoneymanager.backend.model.AccountType;
 @Service
 public class AccountBuilderImpl implements AccountBuilder {
  
-  private UserLookup userLookup;
+  private UserService userLookup;
   private DeductionBuilder deductionBuilder;
   private UserBuilder userBuilder;
   
   
   @Autowired
-  public AccountBuilderImpl(UserLookup userLookup, DeductionBuilder deductionBuilder, UserBuilder userBuilder) {
+  public AccountBuilderImpl(UserService userLookup, DeductionBuilder deductionBuilder, UserBuilder userBuilder) {
     this.userLookup = userLookup;
     this.deductionBuilder = deductionBuilder;
     this.userBuilder = userBuilder;
@@ -37,7 +36,7 @@ public class AccountBuilderImpl implements AccountBuilder {
     accountEntity.setNetAmount(importedData.getNetAmount());
     accountEntity.setAccountName(importedData.getAccountName());
     accountEntity
-        .setUser(userLookup.getUserEntity(importedData.getUser()));
+        .setUser(userLookup.getUser(importedData.getUser()));
     accountEntity.setDateCreated(new Date());
 
 
