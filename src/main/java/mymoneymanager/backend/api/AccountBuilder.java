@@ -3,7 +3,7 @@ package mymoneymanager.backend.api;
 import mymoneymanager.backend.model.AccountDTO;
 import mymoneymanager.backend.model.AccountEntity;
 
-public interface AccountBuilder  {
+public interface AccountBuilder {
 
   	AccountEntity buildAccountEntity(AccountDTO accountDTO);
   

@@ -1,6 +1,7 @@
 package mymoneymanager.backend.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,6 +34,9 @@ public class DeductionEntity {
   @JoinTable(name = "account_deduction_xref", joinColumns = {@JoinColumn(name = "account_id")},
   inverseJoinColumns = {@JoinColumn(name = "deduction_id")})
   private AccountEntity accountEntity;
+  
+  @Column(name="is_expired")
+  private boolean isExpired;
 
   public Long getDeductionId() {
     return deductionId;
@@ -74,8 +78,51 @@ public class DeductionEntity {
     this.accountEntity = accountEntity;
   }
 
-  
-  
+  public boolean isExpired() {
+    return isExpired;
+  }
 
+  public void setExpired(boolean isExpired) {
+    this.isExpired = isExpired;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(accountEntity, amount, deductionId, deductionType, isExpired, name);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    DeductionEntity other = (DeductionEntity) obj;
+    return Objects.equals(accountEntity, other.accountEntity)
+        && Objects.equals(amount, other.amount) && Objects.equals(deductionId, other.deductionId)
+        && Objects.equals(deductionType, other.deductionType) && isExpired == other.isExpired
+        && Objects.equals(name, other.name);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("DeductionEntity [deductionId=");
+    builder.append(deductionId);
+    builder.append(", name=");
+    builder.append(name);
+    builder.append(", deductionType=");
+    builder.append(deductionType);
+    builder.append(", amount=");
+    builder.append(amount);
+    builder.append(", accountEntity=");
+    builder.append(accountEntity);
+    builder.append(", isExpired=");
+    builder.append(isExpired);
+    builder.append("]");
+    return builder.toString();
+  }
 
 }

@@ -1,11 +1,13 @@
 package mymoneymanager.backend.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import mymoneymanager.backend.model.UserEntity;
 
-public interface UserRepository extends CrudRepository<UserEntity, Long>{
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, Long>{
   
-  UserEntity findByName(String lastName, String firstName);
+  UserEntity findByFirstNameAndLastName(String firstName, String lastName);
   
   UserEntity findById(long id);
 
