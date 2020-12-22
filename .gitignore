@@ -34,3 +34,6 @@ project.properties
 
 #Log Files
 *.log
+target/
+.idea/
+.settings/
