@@ -27,8 +27,9 @@ public class ImportServiceImpl implements ImportService {
   @Override
   public void saveFinances(AccountDTO accountDTO) {
     AccountEntity account = accountBuilder.buildAccountEntity(accountDTO);
+    
     Optional<AccountEntity> persistedAccount =
-        accountRepo.findByAccountNameOrDateCreated(accountDTO.getAccountName(), accountDTO.getDateCreated());
+        accountRepo.findByAccountNameOrDateCreated(account.getAccountName(), account.getDateCreated());
     if (persistedAccount.isPresent()) {
       account = updateExistingAccount(account, persistedAccount.get());
     }

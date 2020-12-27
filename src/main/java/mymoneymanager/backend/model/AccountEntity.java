@@ -42,12 +42,12 @@ public class AccountEntity {
   @JoinColumn(name = "user_id")
   private UserEntity user;
 
-  @Column(name = "gross_amount", precision = 4, scale = 2)
-  @Digits(integer = 4, fraction = 2)
+  @Column(name = "gross_amount", precision = 7, scale = 2)
+  @Digits(integer = 5, fraction = 2)
   private BigDecimal grossAmount;
 
-  @Column(name = "net_amount", precision = 4, scale = 2)
-  @Digits(integer = 4, fraction = 2)
+  @Column(name = "net_amount", precision =7, scale = 2)
+  @Digits(integer = 5, fraction = 2)
   private BigDecimal netAmount;
 
   @Column(name = "date_created")
