@@ -3,7 +3,6 @@ package mymoneymanager.backend.controller;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import mymoneymanager.backend.api.ExportService;
 import mymoneymanager.backend.api.ImportService;
 import mymoneymanager.backend.model.AccountDTO;
+import mymoneymanager.backend.model.DeductionDTO;
 
 @RestController
 public class AccountController {
@@ -63,6 +62,23 @@ public class AccountController {
       response = ResponseEntity.ok(importedData);
     } catch (Exception ex) {
       logger.log(Level.SEVERE, "An exception occurred processing data", ex);
+      response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+    }
+    return response;
+  }
+  
+  @GetMapping("/savings")
+  @ResponseBody
+  public ResponseEntity<DeductionDTO> findDeductionsByName(@RequestParam(name = "deductionName") String deductionName ) {
+    ResponseEntity<DeductionDTO> response = ResponseEntity.noContent().build();
+    try {
+      DeductionDTO deduction = exportService.findDeductionInSavings(deductionName);
+      response = ResponseEntity.ok(deduction);
+
+
+    } catch (Exception ex) {
+      logger.log(Level.SEVERE,
+          "An error occurred searching savings for deduction %s and date %tD", ex);
       response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
     }
     return response;

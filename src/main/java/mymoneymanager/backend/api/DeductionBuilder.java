@@ -10,4 +10,6 @@ public interface DeductionBuilder {
 
   List<DeductionDTO> buildDeductionsDTOs(List<DeductionEntity> deductions);
 
+  DeductionDTO buildSumDeduction(List<DeductionEntity> deductionEntities);
+
 }

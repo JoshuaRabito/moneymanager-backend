@@ -19,6 +19,8 @@ public class UserEntity {
   
   @Column(name="last_name")
   private String lastName;
+  
+  @Column(name="email")
   private String email;
  
 

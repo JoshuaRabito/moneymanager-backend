@@ -1,5 +1,6 @@
 package mymoneymanager.backend.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,17 @@ public class DeductionBuilderImpl implements DeductionBuilder {
       dtos.add(dto);
     }
     return dtos;
+  }
+
+  @Override
+  public DeductionDTO buildSumDeduction(List<DeductionEntity> deductionEntities) {
+    List<DeductionDTO> dtos = buildDeductionsDTOs(deductionEntities);
+    
+    BigDecimal sum = dtos.stream().map(DeductionDTO::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
+    DeductionDTO dto = new DeductionDTO();
+    dto.setAmount(sum);
+    dto.setName(dtos.get(0).getName());
+    return dto;
   }
 
 }
