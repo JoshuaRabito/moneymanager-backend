@@ -21,6 +21,8 @@ public class DeductionEntity {
   @Column(name = "deduction_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long deductionId;
+  
+  @Column(name="name")
   private String name;
 
   @OneToOne(fetch = FetchType.LAZY)

@@ -261,3 +261,45 @@
                   type: datetime
                   constraints:
                     - nullable: true
+  - changeSet:
+      id: 9.2
+      author: rabitoj
+      changes:
+        - addUniqueConstraint:
+            tableName: accounts
+            columnNames: account_name, user_id, date_created       
+  - changeSet:
+      id: 9.3
+      author: rabitoj
+      preconditions:
+        - onFail: MARK_RAN
+        - columnExists:
+            tablename: deductions
+            coulmnName: is_expired
+      changes:
+        - addColumn:
+            tableName: deductions
+            columns:
+              - column:
+                  name: is_expired
+                  type: BIT
+                  constraints:
+                    - nullable: true  
+  - changeSet:
+      id: 9.4
+      author: rabitoj
+      comment: "Changing precision of amount"
+      changes:
+      - modifyDataType:
+          tableName: accounts
+          columnName: gross_amount
+          newDataType: Decimal(7,2)
+  - changeSet:
+      id: 9.5
+      author: rabitoj
+      comment: "Changing precision of amount"
+      changes:
+      - modifyDataType:
+          tableName: accounts
+          columnName: net_amount
+          newDataType: Decimal(7,2)
