@@ -1,20 +1,8 @@
-FROM maven:3-jdk-11-slim as builder
+FROM openjdk:17-oracle
 
-COPY . /usr/src/moneymanager-backend
+ARG JAR_FILE=target/*.jar
+ARG PROPS_FILE=src/main/resources/application.properties
+COPY ${JAR_FILE} app.jar
+COPY ${PROPS_FILE} app.properties
 
-WORKDIR /usr/src/moneymanager-backend
-
-RUN mvn package spring-boot:repackage
-
-FROM openjdk:11-jdk-slim
-
-RUN addgroup --system spring && adduser --system --disabled-password --gecos '' --ingroup spring spring
-
-USER spring:spring
-
-WORKDIR /usr/moneymanager-backend
-
-COPY --from=builder /usr/src/moneymanager-backend/target/moneymanager-backend.jar .
-
-CMD ["java", "-jar", "moneymanager-backend.jar"]
-
+ENTRYPOINT  ["java", "-jar","app.jar", "--spring.config.location=file:app.properties"]
