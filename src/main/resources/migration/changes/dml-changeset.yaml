@@ -1,0 +1,145 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: rabitoj
+      comment: "Adding account types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from account_types where account_type = 'Checking'"
+      changes:
+        - insert:
+            tableName: account_types
+            columns:
+              - column:
+                  name: account_type
+                  value: "Checking"
+  - changeSet:
+      id: 2
+      author: rabitoj
+      comment: "Adding account types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from account_types where account_type = 'Saving'"
+      changes:
+        - insert:
+            tableName: account_types
+            columns:
+              - column:
+                  name: account_type
+                  value: "Saving"
+  - changeSet:
+      id: 3
+      author: rabitoj
+      comment: "Adding deduction types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from deduction_types where deduction_type = 'Rent'"
+      changes:
+        - insert:
+            tableName: deduction_types
+            columns:
+              - column:
+                  name: deduction_type
+                  value: "Rent"
+  - changeSet:
+      id: 3.1
+      author: rabitoj
+      comment: "Adding deduction types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from deduction_types where deduction_type = 'Medical'"
+      changes:
+        - insert:
+            tableName: deduction_types
+            columns:
+              - column:
+                  name: deduction_type
+                  value: "Medical"
+  - changeSet:
+      id: 3.2
+      author: rabitoj
+      comment: "Adding deduction types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from deduction_types where deduction_type = 'Food'"
+      changes:
+        - insert:
+            tableName: deduction_types
+            columns:
+              - column:
+                  name: deduction_type
+                  value: "Food"
+  - changeSet:
+      id: 3.3
+      author: rabitoj
+      comment: "Adding deduction types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from deduction_types where deduction_type = 'Utility'"
+      changes:
+        - insert:
+            tableName: deduction_types
+            columns:
+              - column:
+                  name: deduction_type
+                  value: "Utility"
+  - changeSet:
+      id: 3.4
+      author: rabitoj
+      comment: "Adding deduction types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from deduction_types where deduction_type = 'Car'"
+      changes:
+        - insert:
+            tableName: deduction_types
+            columns:
+              - column:
+                  name: deduction_type
+                  value: "Car"
+  - changeSet:
+      id: 3.5
+      author: rabitoj
+      comment: "Adding deduction types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from deduction_types where deduction_type = 'Other'"
+      changes:
+        - insert:
+            tableName: deduction_types
+            columns:
+              - column:
+                  name: deduction_type
+                  value: "Other"
+  - changeSet:
+      id: 3.6
+      author: rabitoj
+      comment: "Adding deduction types"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from deduction_types where deduction_type = 'Savings'"
+      changes:
+        - insert:
+            tableName: deduction_types
+            columns:
+              - column:
+                  name: deduction_type
+                  value: "Savings"
